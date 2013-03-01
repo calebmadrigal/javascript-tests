@@ -1,0 +1,6 @@
+<script src="https://raw.github.com/documentcloud/underscore/master/underscore-min.js"></script>
+<script type="text/javascript">
+    document.writeln(_.map(_.range(1,10), function(x) { return x*10 }));
+    var golden = _.reduce(_.range(1,100), function(acc, x) { return (acc+1)/acc }, 1);
+    document.writeln("<br />Golden Ratio: " + golden);
+</script>

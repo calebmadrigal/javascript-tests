@@ -1,0 +1,13 @@
+<script type="text/javascript">
+    Function.prototype.method = function(name, func) {
+        this.prototype[name] = func;
+        return this;
+    };
+
+    String.method('trim', function (  ) {
+        return this.replace(/^\s+|\s+$/g, '');
+    });
+
+    document.writeln( "Before: [" + "     hello there     " + "]<br />");
+    document.writeln( "After: [" + "  hello there  ".trim() + "]");
+</script>

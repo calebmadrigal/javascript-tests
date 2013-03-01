@@ -1,5 +1,5 @@
 <script>
-    function map(func) {
+    function applymap(func) {
         var result = new Array(arguments.length - 1);
         for(var i = 1; i < arguments.length; i++) {
             result[i-1] = func(arguments[i]);
@@ -7,5 +7,5 @@
         return result;
     }
 
-    document.writeln(map(function(x) { return x * 10 }, 1,2,3,4,5,6,7,8,9,10));
+    document.writeln(applymap(function(x) { return x * 10 }, 1,2,3,4,5,6,7,8,9,10));
 </script>

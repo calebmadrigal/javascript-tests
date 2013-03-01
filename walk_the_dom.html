@@ -1,0 +1,39 @@
+<html><head>
+</head><body>
+
+<div id="test1">
+    <h1>Time to walk the DOM</h1>
+    <div id="test2">
+        <ul>
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+            <li>Item 4</li>
+        </ul>
+        <a href="http://calebmadrigal.com">My blog</a>
+        <p>
+            This is a test.
+        </p>
+    </div>
+</div>
+
+    <script type="text/javascript">
+        function walk_dom(node, func) {
+            func(node);
+            node = node.firstChild;
+            while(node) {
+                walk_dom(node, func);
+                node = node.nextSibling;
+            }
+        }
+
+        // Print DOM
+        var dom_nodes = [];
+        walk_dom(document.body, function(node) { dom_nodes.push(node.innerHTML) });
+        for(node in dom_nodes) {
+            document.write("Node:" + node + "<br />");
+        }
+    </script>
+
+</body></html>
+
