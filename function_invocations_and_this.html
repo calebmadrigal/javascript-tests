@@ -1,0 +1,73 @@
+<script>
+    function print(s) {
+        document.writeln(s + "<br />");
+    }
+
+    // ============ 4 invocations patterns in Javascript ============ //
+
+    // === Method invocation pattern (this is object)
+    var myObj = {
+        name: "[No name]",
+        sayhi: function() {
+            print(this.name + ": " + "Hi there.");
+        }
+    };
+
+    myObj.sayhi();
+    myObj.name = "Caleb";
+    myObj.sayhi();
+
+    print("<br /><br />");
+
+    // === Function invocation pattern (this is global object)
+    function hello() {
+        print(this);
+    }
+    hello();
+
+    // Workaround
+    var numOps = {
+        count: 0,
+        incx: function(x) {
+            var that = this;
+
+            var inc = function() {
+                that.count++;
+            };
+
+            for(var i = 0; i < x; i++) {
+                inc();
+            }
+        }
+    };
+    numOps.incx(10);
+    print(numOps.count);
+
+    print("<br /><br />");
+
+    // === Constructor invocation pattern using 'new' (this is new obj)
+    var Quo = function(string) {
+        this.status = string;
+    };
+    Quo.prototype.get_status = function() {
+        return this.status;
+    };
+
+    myQuo = new Quo("It's good");
+    print(Quo.status);
+    print(myQuo.get_status());
+
+    print("");
+
+    // === Apply invocation pattern (this can be passed in).
+    var array = [3, 4];
+    function add(a,b) { return a+b; }
+    print(add.apply(null, array));
+
+    statusObj = {
+        status: "Everything is okay"
+    };
+    print(Quo.prototype.get_status.apply(statusObj));
+
+</script>
+
