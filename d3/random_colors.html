@@ -1,0 +1,16 @@
+<html><head>
+    <script src="d3.v3.min.js" charset="utf-8"></script>
+</head><body>
+    Cool sports:
+    <li>Snowboarding</li>
+    <li>Mountain Biking</li>
+    <li>Ultimate Frisbee</li>
+    <li>Rock climbing</li>
+    <li>Hiking</li>
+
+    <script type="text/javascript">
+        d3.selectAll("li").style("color", function() {
+          return "hsl(" + Math.random() * 360 + ",100%,50%)";
+        });
+    </script>
+</body></html>

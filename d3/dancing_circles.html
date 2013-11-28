@@ -1,0 +1,62 @@
+<!-- Code borrowed from http://mbostock.github.io/d3/tutorial/circle.html and tweaked. -->
+<html><head>
+    <script src="d3.v3.min.js" charset="utf-8"></script>
+
+<style type='text/css'>
+
+.chart {
+    border: solid 1px #ddd;
+    width: 700px;
+}
+
+.chart circle.little {
+  /*fill: #aaa;*/
+  stroke: #666;
+  stroke-width: 1.5px;
+}
+
+</style>
+
+<script type='text/javascript'>
+var data = [32, 57, 112],
+    dataEnter = data.concat(293),
+    dataExit = data.slice(0, 2),
+    w = 700,
+    h = 400,
+    x = d3.scale.ordinal().domain([57, 32, 112]).rangePoints([0, w], 1),
+    y = d3.scale.ordinal().domain(data).rangePoints([0, h], 2);
+</script>
+
+</head><body>
+
+<div class='chart' id='chart-4'>
+</div><script type='text/javascript'>
+(function() {
+  var svg = d3.select("#chart-4").append("svg")
+      .attr("width", w)
+      .attr("height", h);
+
+  var circle = svg.selectAll(".little")
+      .data(data)
+    .enter().append("circle")
+      .attr("class", "little")
+      .attr("cx", x)
+      .attr("cy", y)
+      .attr("r", 12);
+
+ function randomMove() {
+    circle.transition()
+        .duration(750)
+        .attr("cx", function() { return Math.random() * w; })
+        .attr("cy", function() { return Math.random() * h; })
+        .attr("fill", function() { return "hsl(" + Math.random() * 360 + ",100%,50%)"; });
+ }
+
+  // d3.select("#chart-4 button").on("click", randomMove);
+
+  setInterval(randomMove, 1000);
+
+})();
+</script>
+
+</body></html>
